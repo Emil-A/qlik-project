@@ -1,15 +1,28 @@
-<h1>Palindromes:</h1>
-<%= form_for(@palindrome) do |f| %>
-  <%= f.label :user, "Post user" %>
-  <%= f.text_field :user%>
+<div class="container">
+	<h1>Try to input a palindrome</h1>
+	<%= form_for @palindrome, :html => {:class => "form-horizontal center"} do |f| %>
+      <div class="form-group">
+        <%= f.label :user, "Username:", class: "col-md-1 control-label" %>
+        <div class="col-md-4">
+          <%= f.text_field :user, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :body, "Palindrome:", class: "col-md-1 control-label" %>
+        <div class="col-md-4">
+          <%= f.text_field :body, class: "form-control" %>
+        </div>
+      </div>
+      <div class="row">
+	      <div class="col-md-4 col-md-offset-1">
+	      	<%= f.submit "Submit", class: "btn btn-block btn-primary" %>  
+	      </div>
+	    </div>
+	<% end %>
+	
+	<% @palindromes.each do |palindrome| %>
+		<h2><%= palindrome.body %></h2>
+		<h3>Posted by: <%= palindrome.user %></h3>
+	<% end %>
+</div>
 
-  <%= f.label :body, "Palindrome" %>
-  <%= f.text_field :body%>
-
-  <%= f.submit "Add"%>
-<% end %>
-
-<% @palindromes.each do |palindrome| %>
-	<h2><%= palindrome.body %></h2>
-	<h3>Posted by: <%= palindrome.user %></h3>
-<% end %>
