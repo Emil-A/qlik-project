@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  get 'palindromes/index'
+  resources :palindromes
+  root 'palindromes#index'
 end
