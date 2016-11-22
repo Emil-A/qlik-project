@@ -22,6 +22,11 @@ class PalindromesController < ApplicationController
     @palindrome = Palindrome.find(params[:id])
   end
 
+  def destroy
+    Palindrome.find(params[:id]).destroy
+    redirect_to action: "index"
+  end
+
   private
 
     def post_params
